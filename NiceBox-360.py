@@ -44,25 +44,25 @@ class BoxCommandExecuteHandler(adsk.core.CommandEventHandler):
         self._box = box
     def notify(self, args):
         try:
-            unitsMgr = app.activeProduct.unitsManager
+            # unitsMgr = app.activeProduct.unitsManager
             command = args.firingEvent.sender
             inputs = command.commandInputs
 
             box = self._box
                    
             box.boxName = inputs[0].value
-            box.wall = unitsMgr.evaluateExpression(inputs[1].expression, "cm")
-            box.h = unitsMgr.evaluateExpression(inputs[2].expression, "cm")
-            box.w = unitsMgr.evaluateExpression(inputs[3].expression, "cm")
-            box.d = unitsMgr.evaluateExpression(inputs[4].expression, "cm")
-            box.kerf = unitsMgr.evaluateExpression(inputs[5].expression, "cm")
-            box.mill = unitsMgr.evaluateExpression(inputs[6].expression, "cm")
-            box.shiftTotal = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
-            box.shiftTop = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
-            box.shiftBack = unitsMgr.evaluateExpression(inputs[7].expression, "cm")                    
-            box.shiftFront = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
-            box.shiftBottom = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
-            box.sheetAlpha = unitsMgr.evaluateExpression(inputs[8].expression, "cm")
+            # box.wall = unitsMgr.evaluateExpression(inputs[1].expression, "cm")
+            # box.h = unitsMgr.evaluateExpression(inputs[2].expression, "cm")
+            # box.w = unitsMgr.evaluateExpression(inputs[3].expression, "cm")
+            # box.d = unitsMgr.evaluateExpression(inputs[4].expression, "cm")
+            # box.kerf = unitsMgr.evaluateExpression(inputs[5].expression, "cm")
+            # box.mill = unitsMgr.evaluateExpression(inputs[6].expression, "cm")
+            # box.shiftTotal = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
+            # box.shiftTop = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
+            # box.shiftBack = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
+            # box.shiftFront = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
+            # box.shiftBottom = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
+            # box.sheetAlpha = unitsMgr.evaluateExpression(inputs[8].expression, "cm")
             
 
             if(not box.preview):
@@ -82,25 +82,25 @@ class BoxCommandExecutePreviewHandler(adsk.core.CommandEventHandler):
         self._box = box
     def notify(self, args):
         try:
-            unitsMgr = app.activeProduct.unitsManager
+            # unitsMgr = app.activeProduct.unitsManager
             command = args.firingEvent.sender
             inputs = command.commandInputs
 
             box = self._box
                    
             box.boxName = inputs[0].value
-            box.wall = unitsMgr.evaluateExpression(inputs[1].expression, "cm")
-            box.h = unitsMgr.evaluateExpression(inputs[2].expression, "cm")
-            box.w = unitsMgr.evaluateExpression(inputs[3].expression, "cm")
-            box.d = unitsMgr.evaluateExpression(inputs[4].expression, "cm")
-            box.kerf = unitsMgr.evaluateExpression(inputs[5].expression, "cm")
-            box.mill = unitsMgr.evaluateExpression(inputs[6].expression, "cm")
-            box.shiftTotal = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
-            box.shiftTop = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
-            box.shiftBack = unitsMgr.evaluateExpression(inputs[7].expression, "cm")                    
-            box.shiftFront = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
-            box.shiftBottom = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
-            box.sheetAlpha = unitsMgr.evaluateExpression(inputs[8].expression, "cm")
+            # box.wall = unitsMgr.evaluateExpression(inputs[1].expression, "cm")
+            # box.h = unitsMgr.evaluateExpression(inputs[2].expression, "cm")
+            # box.w = unitsMgr.evaluateExpression(inputs[3].expression, "cm")
+            # box.d = unitsMgr.evaluateExpression(inputs[4].expression, "cm")
+            # box.kerf = unitsMgr.evaluateExpression(inputs[5].expression, "cm")
+            # box.mill = unitsMgr.evaluateExpression(inputs[6].expression, "cm")
+            # box.shiftTotal = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
+            # box.shiftTop = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
+            # box.shiftBack = unitsMgr.evaluateExpression(inputs[7].expression, "cm")                    
+            # box.shiftFront = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
+            # box.shiftBottom = unitsMgr.evaluateExpression(inputs[7].expression, "cm")
+            # box.sheetAlpha = unitsMgr.evaluateExpression(inputs[8].expression, "cm")
             
 
             if(inputs[9].value):
@@ -157,27 +157,27 @@ class BoxCommandCreatedHandler(adsk.core.CommandCreatedEventHandler):
             inputs.addStringValueInput('boxName', 'Box Name', defaultBoxName)
                          
             initWall = adsk.core.ValueInput.createByReal(defaultWall)
-            inputs.addValueInput('wall', 'Wall','cm',initWall)
+            inputs.addValueInput('wall', 'Wall','',initWall)
             
             initH = adsk.core.ValueInput.createByReal(defaultH)      
-            inputs.addValueInput('height', 'Height', 'cm', initH)
+            inputs.addValueInput('height', 'Height', '', initH)
 
             initW = adsk.core.ValueInput.createByReal(defaultW)
-            inputs.addValueInput('w', 'Width', 'cm', initW)
+            inputs.addValueInput('w', 'Width', '', initW)
 
             initD = adsk.core.ValueInput.createByReal(defaultD)
-            inputs.addValueInput('d', 'Depth', 'cm', initD)
+            inputs.addValueInput('d', 'Depth', '', initD)
 
             #to do the thread length
 
             initKerf = adsk.core.ValueInput.createByReal(defaultKerf)
-            inputs.addValueInput('kerf', 'Kerf Laser Cut', 'cm', initKerf)
+            inputs.addValueInput('kerf', 'Kerf Laser Cut', '', initKerf)
             
             initMill = adsk.core.ValueInput.createByReal(defaultMill)
-            inputs.addValueInput('mill', 'Mill diameter', 'cm', initMill)
+            inputs.addValueInput('mill', 'Mill diameter', '', initMill)
 
             initShiftTotal = adsk.core.ValueInput.createByReal(defaultShiftTotal)
-            inputs.addValueInput('shiftTotal', 'Shift', 'cm', initShiftTotal)
+            inputs.addValueInput('shiftTotal', 'Shift', '', initShiftTotal)
 
             initSheetAlpha = adsk.core.ValueInput.createByReal(defaultSheetAlpha)
             inputs.addValueInput('sheetAlpha', 'Tooth Proportions', '', initSheetAlpha)
